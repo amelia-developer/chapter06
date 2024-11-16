@@ -26,8 +26,11 @@ function Modify() {
       getBoardId = ''
   }
 
-  const [eachBoard, setEachBoard] = useState({
-    // 아래 state들을 빈값으로 초기화시켜준건 input과 textarea에 대해서 unControll상태 -> controll상태로 변경되었을때 콘솔에 warning이 찍히는걸 방지하기위해
+  // const refresh_checkcheck = location.state.refresh1
+  // console.log(`refresh_checkcheck는 = ${refresh_checkcheck}`); // false로찍히고있고, 수정완료되면, view에서 console.log에 true라고 나옴
+  // 아래 view로 수정사항 통신할떄 state에 들어가는 'refresh1'을 확인하려고 위에 'refresh_checkcheck'변수만들어서 확인해본거임
+
+  const [eachBoard, setEachBoard] = useState({ // (★중요★)아래 state들을 빈값으로 초기화시켜준건 input과 textarea에 대해서 unControll상태 -> controll상태로 변경되었을때 콘솔에 warning이 찍히는걸 방지하기위해
     title: '',
     author: '',
     contents: ''
@@ -100,10 +103,14 @@ function Modify() {
         count: eachBoard.count,
         modifyDate: modifyDate
       })
-// console.log(`수정되었습니다`);
-console.log(`수정된데이터modifyData는 = ${JSON.stringify(modifyData)}`);
-      
-      navigate(`/view/${getBoardId}`);
+      console.log(`수정되었습니다`);
+      // console.log(`수정된데이터modifyData는 = ${JSON.stringify(modifyData)}`);
+      navigate(`/view/${getBoardId}`, {
+        state: {
+          id: getBoardId,
+          refresh1: true
+        }
+      });
       return modifyData
     } catch (error) {
       console.error(error);

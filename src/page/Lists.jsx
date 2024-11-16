@@ -28,7 +28,8 @@ function Lists() {
         // console.log(`param = ${JSON.stringify(param)}`);      
         navigate(`/view/${param}`, {
             state:{
-                id: param
+                id: param,
+                count: 0 // TODO:하는중
             }
         })
     }
