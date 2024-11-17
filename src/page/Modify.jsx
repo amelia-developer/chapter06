@@ -101,10 +101,11 @@ function Modify() {
         author: author,
         contents: contents,
         count: eachBoard.count,
-        modifyDate: modifyDate
+        registerDate: eachBoard.registerDate, // 기존 작성일을 유지한다
+        modifyDate: modifyDate // 수정일은 현재일과 똑같이
       })
       console.log(`수정되었습니다`);
-      // console.log(`수정된데이터modifyData는 = ${JSON.stringify(modifyData)}`);
+      console.log(`수정된데이터modifyData는 = ${JSON.stringify(modifyData)}`);
       navigate(`/view/${getBoardId}`, {
         state: {
           id: getBoardId,

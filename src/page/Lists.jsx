@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate} from "react-router-dom"
 import PageNation from './PageNation';
 import axios from 'axios';
+import Loading from './Loading';
 
 function Lists() {
     const navigate = useNavigate()
@@ -71,7 +72,7 @@ function Lists() {
                                         <td><a onClick={() => onLinktoBoard(value.id)}><span>{value.author}</span></a></td>
                                         <td><a onClick={() => onLinktoBoard(value.id)}><span>{value.count}</span></a></td>
                                         <td><a onClick={() => onLinktoBoard(value.id)}><span>{value.registerDate}</span></a></td>
-                                        <td><a onClick={() => onLinktoBoard(value.id)}><span></span></a></td>
+                                        <td><a onClick={() => onLinktoBoard(value.id)}><span>{value.modifyDate}</span></a></td>
                                     </tr>
                         })
                         

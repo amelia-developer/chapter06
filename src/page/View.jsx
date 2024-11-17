@@ -55,7 +55,13 @@ console.log(`location.state.count = ${location.state.count}`);
     }
 
     const onDelete = (param) =>  {
-        //TODO:삭제하는중임
+        console.log(`삭제하려는 글의 id 즉,param은 = ${param}`);
+        alert('해당글이 삭제됩니다')
+        axios.delete(`http://localhost:3000/board/${param}`, {
+            ...eachBoard,
+            id:param
+        })
+        navigate(`/`)
     }
 
 // console.log(`업데이트가 된 eachBoard = ${JSON.stringify(eachBoard)}`);
