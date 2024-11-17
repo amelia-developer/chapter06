@@ -13,9 +13,9 @@ function View() {
     //     getBoardId = ''
     // }
     const getBoardId = location.state?.id || '' // 위에 if문을 옵셔널체이닝을 써서 줄이기
-// console.log(`getBoardId = ${getBoardId}`);
-console.log(`location.state.count = ${location.state.count+1}`); // TODO:하는중
-    
+// console.log(`getBoardId = ${getBoardId}`);    
+
+console.log(`location.state.count = ${location.state.count}`);
 
     const [eachBoard, setEachBoard] = useState({}) // 아래 화면에 뿌려줄때, map으로 돌려주는것도 아니고 객체형태로 뿌려주니까 useState의 초기값을 빈객체로 설정하는게 맞음
     const [loading, setLoading] = useState(false) // 맨처음에 화면로딩할때 콘솔에서 eachBoard의 상태값이 빈객체로 나오는거(useState비동기적상태)를 로딩상태추가하여 로딩일때와 그렇지않을땐 컨텐츠보여주기
@@ -54,6 +54,10 @@ console.log(`location.state.count = ${location.state.count+1}`); // TODO:하는�
         navigate(`/`)
     }
 
+    const onDelete = (param) =>  {
+        //TODO:삭제하는중임
+    }
+
 // console.log(`업데이트가 된 eachBoard = ${JSON.stringify(eachBoard)}`);
 // console.log(`location.state1 = ${JSON.stringify(location.state)}`); // refresh가 true로 옴(modify에서 수정해서 view로 넘어오면 refresh는 true)
     if(loading) {
@@ -66,7 +70,7 @@ console.log(`location.state.count = ${location.state.count+1}`); // TODO:하는�
                     <span className="title">{eachBoard.title}</span>
                     <div className="inner">
                         <span className="author">{eachBoard.author}</span>
-                        <span className="count">{eachBoard.count}</span>
+                        <span className="count">{location.state.count}</span>
                     </div>
                 </div>
                 <div className="middle">
@@ -75,7 +79,7 @@ console.log(`location.state.count = ${location.state.count+1}`); // TODO:하는�
                 <div className="bottom">
                     <button onClick={onListBoard}>목록으로 가기</button>
                     <button onClick={() => onModify(eachBoard.id)}>수정하기</button>
-                    <button>삭제하기</button>
+                    <button onClick={() => onDelete(eachBoard.id)}>삭제하기</button>
                 </div>
             </div>
         </>

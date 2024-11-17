@@ -25,11 +25,19 @@ function Lists() {
     
     // 게시글 클릭하면 해당 게시글 뷰 페이지로 이동
     const onLinktoBoard = (param) => {
-        // console.log(`param = ${JSON.stringify(param)}`);      
+        const choiceBoard = contentsSorting.find(function(board) { // 게시글 클릭했을때 게시글의 id가 똑같은지 확인
+            return board.id === param            
+        })
+        const countIncrement = choiceBoard.count + 1; // 똑같으면 해당 게시글의 카운트 증가
+        // 증가된 카운트를 json-server에 업데이트하려면 통신해야지
+        axios.put(`http://localhost:3000/board/${param}`, {
+            ...choiceBoard,
+            count: countIncrement
+        })
         navigate(`/view/${param}`, {
             state:{
                 id: param,
-                count: 0 // TODO:하는중
+                count: countIncrement
             }
         })
     }
