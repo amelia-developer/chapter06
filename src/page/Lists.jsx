@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate} from "react-router-dom"
 import PageNation from './PageNation';
 import axios from 'axios';
-import Loading from './Loading';
 
 function Lists() {
+     const [contentsSorting, setContentsSorting] = useState([])
+
     const navigate = useNavigate()
 
     const onNewWrite = () => {
@@ -12,18 +13,20 @@ function Lists() {
     }
 
     const thArr = ['번호', '제목', '작성자', '조회수', '등록일', '수정일']
+    const pageBoardCount = 5; // 한페이지당 가져와야 하는 글의 갯수
+    const [nowPage, setNowPage] = useState(1) // 현재페이지
+    const [totalPage, setTotalPage] = useState(0) // 총페이지수
 
-    const [contentsSorting, setContentsSorting] = useState([])
-    
     // td에 들어갈 데이터 가져오기_useEffect로 의존성배열은 빈배열로 페이지 로드시, 한번만 불러옴
     useEffect(() => {
-        axios.get("http://localhost:3000/board")
+        axios.get(`http://localhost:3000/board?_page=${nowPage}&_per_page=${pageBoardCount}`)  // 페이지 넘버링 바뀌면, 통신통해서 주소에 쿼리파라미터(= 형태는 이렇게 '?key=value')주기
             .then(response => {
-                // console.log(`response.data = ${JSON.stringify(response.data)}`);                
-                setContentsSorting(response.data)
+                // console.log(`response.data = ${JSON.stringify(response.data)}`);             
+                setContentsSorting(response.data.data) // response.data안에 data라는 key를 가져옴
+                setTotalPage(response.data.pages)
             })
-    }, [])
-    
+    }, [nowPage]) // 의존성배열에 페이지넘버를 넣어서, 페이지 클릭했을때 해당페이지에 해당하는 글의갯수를 가져온다
+
     // 게시글 클릭하면 해당 게시글 뷰 페이지로 이동
     const onLinktoBoard = (param) => {
         const choiceBoard = contentsSorting.find(function(board) { // 게시글 클릭했을때 게시글의 id가 똑같은지 확인
@@ -42,6 +45,15 @@ function Lists() {
             }
         })
     }
+
+    const onChangePage = (pageNumber) => {
+        // console.log(`onChangePage눌렸음`); // 자식컴포넌트에서 props로 전달한 함수가 제대로 작동하는지 확인
+        // console.log(`pageNumber = ${pageNumber}`); // 자식컴포넌트에서 props로 전달한 함수의 인자값이 제대로 찍히는지 확인
+
+        setNowPage(pageNumber)
+    }
+    // console.log(`nowPage = ${nowPage}`);
+    
     return (
         <>
             <h1>게시판</h1>
@@ -75,14 +87,13 @@ function Lists() {
                                         <td><a onClick={() => onLinktoBoard(value.id)}><span>{value.modifyDate}</span></a></td>
                                     </tr>
                         })
-                        
                     }
                 </tbody>
             </table>
             <div className="btn-box">
                 <button onClick={onNewWrite}>새 글작성</button>
             </div>
-            <PageNation></PageNation>
+            <PageNation onPageHandler={onChangePage} nowPage={nowPage} totalPage={totalPage}/>
         </>
     )
 }
