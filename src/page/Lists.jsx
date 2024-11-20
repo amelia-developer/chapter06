@@ -45,6 +45,11 @@ function Lists() {
         })
     }
 
+    // 페이징의번호를 쿼리파라미터(?key=value)형태로 주소에 넣기
+    useEffect(() => {
+        navigate(`/board?_page=${nowPage}`)
+    },[nowPage, navigate])
+    
     const onChangePage = (pageNumber) => {
         // console.log(`onChangePage눌렸음`); // 자식컴포넌트에서 props로 전달한 함수가 제대로 작동하는지 확인
         // console.log(`pageNumber = ${pageNumber}`); // 자식컴포넌트에서 props로 전달한 함수의 인자값이 제대로 찍히는지 확인

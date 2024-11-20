@@ -14,7 +14,7 @@ root.render(
   // <React.StrictMode>
     <BrowserRouter future={{v7_startTransition: true}}>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/board" element={<App />} />
         <Route path="/lists" element={<Lists />}></Route>
         <Route path="/insert" element={<Insert />}></Route>
         <Route path="/view/:key1" element={<View />}></Route>
