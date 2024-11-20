@@ -18,10 +18,9 @@ function Lists() {
     const [totalPage, setTotalPage] = useState(0) // 총페이지수
 
     // td에 들어갈 데이터 가져오기_useEffect로 의존성배열은 빈배열로 페이지 로드시, 한번만 불러옴
-    useEffect(() => {
+    useEffect(() => {       
         axios.get(`http://localhost:3000/board?_page=${nowPage}&_per_page=${pageBoardCount}`)  // 페이지 넘버링 바뀌면, 통신통해서 주소에 쿼리파라미터(= 형태는 이렇게 '?key=value')주기
-            .then(response => {
-                // console.log(`response.data = ${JSON.stringify(response.data)}`);             
+            .then(response => {                
                 setContentsSorting(response.data.data) // response.data안에 data라는 key를 가져옴
                 setTotalPage(response.data.pages)
             })
@@ -53,6 +52,12 @@ function Lists() {
         setNowPage(pageNumber)
     }
     // console.log(`nowPage = ${nowPage}`);
+
+    const onNumberGroupChange = (changeNumber) => {
+        // console.log(`changeNumber = ${changeNumber}`);
+        
+        setNowPage(changeNumber)
+    }
     
     return (
         <>
@@ -93,7 +98,7 @@ function Lists() {
             <div className="btn-box">
                 <button onClick={onNewWrite}>새 글작성</button>
             </div>
-            <PageNation onPageHandler={onChangePage} nowPage={nowPage} totalPage={totalPage}/>
+            <PageNation onPageHandler={onChangePage} nowPage={nowPage} totalPage={totalPage} onNumberGroupHandler={onNumberGroupChange}/>
         </>
     )
 }

@@ -87,6 +87,9 @@ table {
             a {
                 display: block;
                 text-decoration: none;
+                &.active {
+                    color: #DC554F;
+                }
             }
         }
     } // ol종료
