@@ -6,6 +6,10 @@ import Loading from './Loading';
 function View() {    
     //  해당 글 번호에 해당하는 게시글 갖고오기
     const location = useLocation();
+    const queryStr = new URLSearchParams(location.search);
+// console.log(`queryStr = ${queryStr}`);
+    const pages = queryStr.get('_page');
+
     // let getBoardId = ''
     // if(location.state !== null) {
     //     getBoardId = location.state.id
@@ -14,8 +18,10 @@ function View() {
     // }
     const getBoardId = location.state?.id || '' // 위에 if문을 옵셔널체이닝을 써서 줄이기
 // console.log(`getBoardId = ${getBoardId}`);    
+    const qustrNowPage = location.state?.page || pages
 
-console.log(`location.state.count = ${location.state.count}`);
+// console.log(`location.state.count = ${location.state.count}`);
+// console.log(`location.state.page = ${location.state.page}`);
 
     const [eachBoard, setEachBoard] = useState({}) // 아래 화면에 뿌려줄때, map으로 돌려주는것도 아니고 객체형태로 뿌려주니까 useState의 초기값을 빈객체로 설정하는게 맞음
     const [loading, setLoading] = useState(false) // 맨처음에 화면로딩할때 콘솔에서 eachBoard의 상태값이 빈객체로 나오는거(useState비동기적상태)를 로딩상태추가하여 로딩일때와 그렇지않을땐 컨텐츠보여주기
@@ -42,16 +48,19 @@ console.log(`location.state.count = ${location.state.count}`);
     const onModify = (param) => {
         // console.log(`수정하려는 글번호 param = ${param}`);
         console.log(`수정페이지로 이동합니다`);
-        navigate(`/modify/${param}`, {
+        navigate(`/modify?id=${param}&page=${qustrNowPage}`, {
             state:{
                 id: param,
-                refresh1:false // modify에서 수정 후, view로 돌아왔을때 수정하여 업데이트 된 데이터를 화면에 보여줄때 구분짓기 위한 플래그
+                refresh1:false, // modify에서 수정 후, view로 돌아왔을때 수정하여 업데이트 된 데이터를 화면에 보여줄때 구분짓기 위한 플래그
+                page: qustrNowPage
             }
         })
     }
 
     const onListBoard = () => {
-        navigate(`/`)
+        // navigate(`/`)
+// console.log(`qustrNowPage = ${qustrNowPage}`);
+        navigate(`/lists?_page=${qustrNowPage}`)
     }
 
     const onDelete = (param) =>  {
@@ -61,7 +70,8 @@ console.log(`location.state.count = ${location.state.count}`);
             ...eachBoard,
             id:param
         })
-        navigate(`/`)
+        // navigate(`/lists`)
+navigate(`/lists?_page=${location.state.page}`)
     }
 
 // console.log(`업데이트가 된 eachBoard = ${JSON.stringify(eachBoard)}`);

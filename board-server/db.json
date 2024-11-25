@@ -5,7 +5,7 @@
       "title": "드라마 '정숙한 세일즈' 너무 재밌습니다",
       "author": "작가",
       "contents": "정숙한세일즈의 김소연 연기가 너무 좋네요.\n대사도 너무 귀에 잘들어오네요.\n\n정숙이는 결국 이혼통보를 날렸다! 핵사이다!!",
-      "count": 4,
+      "count": 5,
       "registerDate": "2024-11-17 15:32:44",
       "modifyDate": "2024-11-17 15:33:57"
     },
@@ -87,7 +87,7 @@
       "title": "테스트5번제목",
       "author": "테스트5",
       "contents": "테스트5번내용",
-      "count": 0,
+      "count": 1,
       "registerDate": "2024-11-17 15:41:51"
     },
     {
@@ -95,7 +95,7 @@
       "title": "테스트6번제목",
       "author": "테스트6",
       "contents": "테스트6번내용",
-      "count": 0,
+      "count": 1,
       "registerDate": "2024-11-17 15:42:00"
     },
     {
@@ -119,7 +119,7 @@
       "title": "테스트9번제목",
       "author": "테스트9",
       "contents": "테스트9번내용",
-      "count": 1,
+      "count": 2,
       "registerDate": "2024-11-17 15:42:30"
     },
     {
@@ -127,7 +127,7 @@
       "title": "테스트10번제목",
       "author": "테스트10",
       "contents": "테스트10번내용",
-      "count": 1,
+      "count": 2,
       "registerDate": "2024-11-17 15:42:42"
     },
     {
@@ -135,7 +135,7 @@
       "title": "테스트11제목",
       "author": "테스트11",
       "contents": "테스트11번내용",
-      "count": 0,
+      "count": 1,
       "registerDate": "2024-11-18 23:58:30"
     },
     {
@@ -239,7 +239,7 @@
       "title": "테스트25제목",
       "author": "테스트25",
       "contents": "테스트25내용",
-      "count": 0,
+      "count": 1,
       "registerDate": "2024-11-19 00:01:08"
     },
     {
@@ -284,19 +284,12 @@
     },
     {
       "id": "7143",
-      "title": "이민싫음1",
-      "author": "이민싫음1",
-      "contents": "이민싫음1",
-      "count": 0,
-      "registerDate": "2024-11-19 00:02:43"
-    },
-    {
-      "id": "f5fa",
-      "title": "이민싫음2",
-      "author": "이민싫음2",
-      "contents": "이민싫음2",
-      "count": 0,
-      "registerDate": "2024-11-19 00:02:52"
+      "title": "이민가고싶다_호주로",
+      "author": "이민가고싶다",
+      "contents": "호주로 이민가고싶다. 영어공부 열심히해야지",
+      "count": 6,
+      "registerDate": "2024-11-19 00:02:43",
+      "modifyDate": "2024-11-25 15:08:36"
     },
     {
       "id": "b632",
@@ -327,7 +320,7 @@
       "title": "이민싫음6",
       "author": "이민싫음6",
       "contents": "이민싫음6",
-      "count": 0,
+      "count": 3,
       "registerDate": "2024-11-19 00:03:32"
     },
     {
@@ -367,7 +360,7 @@
       "title": "이민싫음12",
       "author": "이민싫음12",
       "contents": "이민싫음12",
-      "count": 0,
+      "count": 2,
       "registerDate": "2024-11-19 00:04:21"
     },
     {
@@ -399,7 +392,7 @@
       "title": "이민싫음16",
       "author": "이민싫음16",
       "contents": "이민싫음16",
-      "count": 0,
+      "count": 6,
       "registerDate": "2024-11-19 00:05:10"
     },
     {
@@ -407,7 +400,7 @@
       "title": "이민싫음17",
       "author": "이민싫음17",
       "contents": "이민싫음17",
-      "count": 0,
+      "count": 5,
       "registerDate": "2024-11-19 00:05:23"
     },
     {
@@ -431,7 +424,7 @@
       "title": "이민싫음20",
       "author": "이민싫음20",
       "contents": "이민싫음20",
-      "count": 0,
+      "count": 2,
       "registerDate": "2024-11-19 00:05:52"
     },
     {
@@ -439,7 +432,7 @@
       "title": "이민싫음21",
       "author": "이민싫음21",
       "contents": "이민싫음21",
-      "count": 0,
+      "count": 12,
       "registerDate": "2024-11-19 00:06:24"
     },
     {
@@ -447,7 +440,7 @@
       "title": "이민싫음22",
       "author": "이민싫음22",
       "contents": "이민싫음22",
-      "count": 0,
+      "count": 1,
       "registerDate": "2024-11-19 00:06:33"
     },
     {
@@ -479,7 +472,7 @@
       "title": "이민싫음26",
       "author": "이민싫음26",
       "contents": "이민싫음26",
-      "count": 0,
+      "count": 3,
       "registerDate": "2024-11-19 00:07:13"
     },
     {
@@ -487,7 +480,7 @@
       "title": "이민싫음27",
       "author": "이민싫음27",
       "contents": "이민싫음27",
-      "count": 0,
+      "count": 1,
       "registerDate": "2024-11-19 00:07:22"
     },
     {
@@ -495,32 +488,41 @@
       "title": "이민싫음28",
       "author": "이민싫음28",
       "contents": "이민싫음28",
-      "count": 0,
+      "count": 4,
       "registerDate": "2024-11-19 00:07:35"
     },
     {
       "id": "d597",
-      "title": "이민싫음29",
-      "author": "이민싫음29",
-      "contents": "이민싫음29",
-      "count": 0,
-      "registerDate": "2024-11-19 00:07:44"
-    },
-    {
-      "id": "5c06",
-      "title": "이민싫음30",
-      "author": "이민싫음30",
-      "contents": "이민싫음30",
-      "count": 1,
-      "registerDate": "2024-11-19 00:07:55"
+      "title": "이번주는 여행을 다녀옴",
+      "author": "여행자",
+      "contents": "이번주는 제주도로 여행을 다녀왔습니다.",
+      "count": 4,
+      "registerDate": "2024-11-19 00:07:44",
+      "modifyDate": "2024-11-24 20:39:53"
     },
     {
       "id": "8d37",
       "title": "제주도 여행갑니다",
       "author": "여행자",
       "contents": "즐거운 제주도 여행을 갑니다",
-      "count": 0,
+      "count": 7,
       "registerDate": "2024-11-20 20:16:14"
+    },
+    {
+      "id": "56a3",
+      "title": "떠나요",
+      "author": "떠나는여행자",
+      "contents": "떠납니다 제주도로",
+      "count": 24,
+      "registerDate": "2024-11-20 23:07:24"
+    },
+    {
+      "id": "38d3",
+      "title": "정우성 너무 충격적임",
+      "author": "연예부기자",
+      "contents": "정우성과 문가비 그리고, 정우성에게는 일반인 여친이 있다는데?\n정말 놀랍고 충격이다...",
+      "count": 1,
+      "registerDate": "2024-11-25 15:10:32"
     }
   ]
 }

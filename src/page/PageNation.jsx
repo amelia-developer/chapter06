@@ -38,9 +38,9 @@ function PageNation({onPageHandler, nowPage, totalPage, onNumberGroupHandler}) {
         } 
     }
 
-    const onPageGroupNext = () => {        
+    const onPageGroupNext = () => {                
         if(nowPage < totalPage) {            
-            if(nowPage % pageGroupSize === 1) {             
+            if(nowPage % pageGroupSize === 1 || nowPage % pageGroupSize === 0) {                           
                 onNumberGroupHandler(nowPage + 5)
             }
             // 마지막페이징그룹의 첫번째 숫자에 5를 전체페이지의 수보다 크면, +5를 안한다

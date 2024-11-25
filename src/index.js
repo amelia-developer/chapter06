@@ -12,13 +12,13 @@ import Modify from './page/Modify';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <BrowserRouter future={{v7_startTransition: true}}>
+    <BrowserRouter future={{v7_startTransition: true, v7_relativeSplatPath: true}}>
       <Routes>
-        <Route path="/board" element={<App />} />
+        <Route path="/" element={<App />} />
         <Route path="/lists" element={<Lists />}></Route>
         <Route path="/insert" element={<Insert />}></Route>
-        <Route path="/view/:key1" element={<View />}></Route>
-        <Route path="/modify/:key1" element={<Modify />}></Route>
+        <Route path="/view" element={<View />}></Route>
+        <Route path="/modify" element={<Modify />}></Route>
       </Routes>
     </BrowserRouter> 
     

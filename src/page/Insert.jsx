@@ -48,20 +48,20 @@ function Insert() {
     const navigate = useNavigate();
 
     const onRegister = async() => {
-       try {
-            const registerData = await axios.post("http://localhost:3000/board", {
-                title: title,
-                author: author,
-                contents: contents,
-                count: 0,
-                registerDate: registerDate
-            })
-            console.log(`등록되었습니다`);            
-            navigate("/");
-            return registerData
-       } catch (error) {
-            console.error(error);                        
-       } 
+        try {
+                const registerData = await axios.post("http://localhost:3000/board", {
+                    title: title,
+                    author: author,
+                    contents: contents,
+                    count: 0,
+                    registerDate: registerDate
+                })
+                console.log(`등록되었습니다`);            
+                navigate("/lists");
+                return registerData
+        } catch (error) {
+                console.error(error);                        
+        } 
     }
 
     const onCancle = () => {

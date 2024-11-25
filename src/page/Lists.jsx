@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useLocation} from "react-router-dom"
 import PageNation from './PageNation';
 import axios from 'axios';
 
-function Lists() {
+function Lists() { 
      const [contentsSorting, setContentsSorting] = useState([])
 
     const navigate = useNavigate()
+    const location = useLocation()
 
+// const location = useLocation()
+// const states = location.state;
+// console.log(`states = ${JSON.stringify(states)}`);
+    
     const onNewWrite = () => {
         navigate("/insert") // Insert.jsx로 화면넘기기
     }
@@ -18,13 +23,24 @@ function Lists() {
     const [totalPage, setTotalPage] = useState(0) // 총페이지수
 
     // td에 들어갈 데이터 가져오기_useEffect로 의존성배열은 빈배열로 페이지 로드시, 한번만 불러옴
-    useEffect(() => {       
-        axios.get(`http://localhost:3000/board?_page=${nowPage}&_per_page=${pageBoardCount}`)  // 페이지 넘버링 바뀌면, 통신통해서 주소에 쿼리파라미터(= 형태는 이렇게 '?key=value')주기
-            .then(response => {                
+    useEffect(() => {
+        navigate(`/lists?_page=${nowPage}`)
+        axios.get(`http://localhost:3000/board?_page=${nowPage}&_per_page=${pageBoardCount}&_sort=-registerDate`)  // 페이지 넘버링 바뀌면, 통신통해서 주소에 쿼리파라미터(= 형태는 이렇게 '?key=value')주기
+            .then(response => {     
+                // console.log(`response.data.data = ${JSON.stringify(response.data.data)}`);
                 setContentsSorting(response.data.data) // response.data안에 data라는 key를 가져옴
                 setTotalPage(response.data.pages)
             })
-    }, [nowPage]) // 의존성배열에 페이지넘버를 넣어서, 페이지 클릭했을때 해당페이지에 해당하는 글의갯수를 가져온다
+    }, [nowPage, navigate]) // 의존성배열에 페이지넘버를 넣어서 페이지 클릭했을때 페이징의 번호를 쿼리파라미터(?key=value)형태로 주소에 넣어서 해당페이지에 해당하는 글의갯수를 가져온다
+ 
+    //  내가 주소창에 직접 페이징넘버를 입력했을때 해당페이징에서 보여지는 글의 갯수를 가져온다
+    useEffect(() => {
+        const query = new URLSearchParams(location.search)
+        const pages = query.get('_page')
+        if(pages) {
+            setNowPage(parseInt(pages, 10))
+        }
+    }, [location.search])
 
     // 게시글 클릭하면 해당 게시글 뷰 페이지로 이동
     const onLinktoBoard = (param) => {
@@ -37,19 +53,16 @@ function Lists() {
             ...choiceBoard,
             count: countIncrement
         })
-        navigate(`/view/${param}`, {
+
+        navigate(`/view?id=${param}&page=${nowPage}`, {
             state:{
                 id: param,
-                count: countIncrement
-            }
+                count: countIncrement,
+                page: nowPage
+            }            
         })
     }
 
-    // 페이징의번호를 쿼리파라미터(?key=value)형태로 주소에 넣기
-    useEffect(() => {
-        navigate(`/board?_page=${nowPage}`)
-    },[nowPage, navigate])
-    
     const onChangePage = (pageNumber) => {
         // console.log(`onChangePage눌렸음`); // 자식컴포넌트에서 props로 전달한 함수가 제대로 작동하는지 확인
         // console.log(`pageNumber = ${pageNumber}`); // 자식컴포넌트에서 props로 전달한 함수의 인자값이 제대로 찍히는지 확인

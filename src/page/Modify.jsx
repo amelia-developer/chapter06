@@ -26,6 +26,12 @@ function Modify() {
       getBoardId = ''
   }
 
+  const queryStr = new URLSearchParams(location.search);
+  const pages = queryStr.get('_page');
+  const qustrNowPage = location.state?.page || pages
+
+  console.log(`qustrNowPage = ${qustrNowPage}`);
+  
   // const refresh_checkcheck = location.state.refresh1
   // console.log(`refresh_checkcheck는 = ${refresh_checkcheck}`); // false로찍히고있고, 수정완료되면, view에서 console.log에 true라고 나옴
   // 아래 view로 수정사항 통신할떄 state에 들어가는 'refresh1'을 확인하려고 위에 'refresh_checkcheck'변수만들어서 확인해본거임
@@ -52,7 +58,7 @@ function Modify() {
   const navigate = useNavigate()
   const onCancelModify = () => {
     alert(`수정을 취소하였습니다. 목록으로 이동합니다`);
-        navigate(`/`)
+        navigate(`/lists?_page=${qustrNowPage}`)
   }
 
   const [updateInsert, setUpdateInsert] = useState({
@@ -106,10 +112,11 @@ function Modify() {
       })
       console.log(`수정되었습니다`);
       console.log(`수정된데이터modifyData는 = ${JSON.stringify(modifyData)}`);
-      navigate(`/view/${getBoardId}`, {
+      navigate(`/view?id=${getBoardId}&page=${qustrNowPage}`, {
         state: {
           id: getBoardId,
-          refresh1: true
+          refresh1: true,
+          page: qustrNowPage
         }
       });
       return modifyData
