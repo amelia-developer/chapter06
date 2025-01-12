@@ -30,7 +30,7 @@ function View() {
         if(getBoardId) { // getBoardId이게 유효한 경우에만 실행
             setLoading(true) // 데이터를 갖고오기전에(=통신전에) 로딩화면 보여주기
             setTimeout(() => {
-                axios.get(`http://localhost:3000/board/${getBoardId}`)
+                axios.get(`https://fallacious-chivalrous-date.glitch.me/board/${getBoardId}`)
                 .then(response => {
                     // console.log(`response.data = ${JSON.stringify(response.data)}`);
                     setEachBoard(response.data)
@@ -66,7 +66,7 @@ function View() {
     const onDelete = (param) =>  {
         console.log(`삭제하려는 글의 id 즉,param은 = ${param}`);
         alert('해당글이 삭제됩니다')
-        axios.delete(`http://localhost:3000/board/${param}`, {
+        axios.delete(`https://fallacious-chivalrous-date.glitch.me/board/${param}`, {
             ...eachBoard,
             id:param
         })

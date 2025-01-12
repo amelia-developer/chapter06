@@ -44,7 +44,7 @@ function Modify() {
     
   useEffect(() => { // 화면에 가장 처음 렌더링 할때만 실행하면 된다고 생각해서 빈배열을 넣은 useEffect를 씀
       if(getBoardId) { // getBoardId이게 유효한 경우에만 실행
-        axios.get(`http://localhost:3000/board/${getBoardId}`)
+        axios.get(`https://fallacious-chivalrous-date.glitch.me/board/${getBoardId}`)
           .then(response => {
               // console.log(`response.data = ${JSON.stringify(response.data)}`);
               setEachBoard(response.data)
@@ -101,7 +101,7 @@ function Modify() {
 // console.log(`getBoardId = ${getBoardId}`);
     
     try {
-      const modifyData = await axios.put(`http://localhost:3000/board/${getBoardId}`, {
+      const modifyData = await axios.put(`https://fallacious-chivalrous-date.glitch.me/board/${getBoardId}`, {
         id: eachBoard.id,
         title: title,
         author: author,

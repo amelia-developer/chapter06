@@ -22,14 +22,43 @@ function Lists() {
     const [nowPage, setNowPage] = useState(1) // 현재페이지
     const [totalPage, setTotalPage] = useState(0) // 총페이지수
 
+    // 2025-01-12글리치랑 연동시키려고 페이징처리수정[s]
+    // 페이지 링크 정보를 추출하는 함수
+    const calculateTotalPages = (linkHeader) => {
+        const links = linkHeader.split(',')
+        const lastLinks = links.find(link => link.includes('rel="last"'))
+        if(lastLinks) {
+            const lastPageMath = lastLinks.match(/_page=(\d+)/) // listLink는 Link헤더에서 'last'라는 관계(rel)을 가진 링크
+                                                                // _page라는 문자열을 찾아서 하나이상의 숫자를 찾는다, 이 숫자는 페이지 번호를 나타냄 (\d는 숫자)
+console.log(`lastPageMath = ${JSON.stringify(lastPageMath)}`);
+            if(lastPageMath) {
+                return parseInt(lastPageMath[1], 5)
+            }
+        }
+        return 1 // 이거는 last링크를 찾지 못하거나 페이지를 추출하지 못했을 때 기본적으로 페이지 수를 1로 설정(=안전장치)
+    }
+    // 2025-01-12글리치랑 연동시키려고 페이징처리수정[e]
+
     // td에 들어갈 데이터 가져오기_useEffect로 의존성배열은 빈배열로 페이지 로드시, 한번만 불러옴
     useEffect(() => {
         navigate(`/lists?_page=${nowPage}`)
-        axios.get(`http://localhost:3000/board?_page=${nowPage}&_per_page=${pageBoardCount}&_sort=-registerDate`)  // 페이지 넘버링 바뀌면, 통신통해서 주소에 쿼리파라미터(= 형태는 이렇게 '?key=value')주기
-            .then(response => {     
-                // console.log(`response.data.data = ${JSON.stringify(response.data.data)}`);
-                setContentsSorting(response.data.data) // response.data안에 data라는 key를 가져옴
-                setTotalPage(response.data.pages)
+        // axios.get(`https://fallacious-chivalrous-date.glitch.me/board?_page=${nowPage}&_per_page=${pageBoardCount}&_sort=-registerDate`)  // 페이지 넘버링 바뀌면, 통신통해서 주소에 쿼리파라미터(= 형태는 이렇게 '?key=value')주기
+        axios.get(`https://fallacious-chivalrous-date.glitch.me/board?_page=${nowPage}&_limit=${pageBoardCount}&_sort=registerDate&_order=desc`)
+            .then(response => {
+                setContentsSorting(response.data) // response.data안에 data라는 key를 가져옴
+                // setTotalPage(response.data.pages)
+
+                // Link헤더에서 총 페이지수 계산(2025-01-12글리치랑 연동시키려고 페이징처리수정[s])
+                const headerLink = response.headers.link
+// console.log(`headerLink = ${JSON.stringify(headerLink)}`);
+                if(headerLink) {
+                    const totalPage = calculateTotalPages(headerLink)
+                    setTotalPage(totalPage)
+                }
+                // Link헤더에서 총 페이지수 계산(2025-01-12글리치랑 연동시키려고 페이징처리수정[e])
+            })
+            .catch(error => {
+                console.error(error)
             })
     }, [nowPage, navigate]) // 의존성배열에 페이지넘버를 넣어서 페이지 클릭했을때 페이징의 번호를 쿼리파라미터(?key=value)형태로 주소에 넣어서 해당페이지에 해당하는 글의갯수를 가져온다
  
@@ -49,7 +78,7 @@ function Lists() {
         })
         const countIncrement = choiceBoard.count + 1; // 똑같으면 해당 게시글의 카운트 증가
         // 증가된 카운트를 json-server에 업데이트하려면 통신해야지
-        axios.put(`http://localhost:3000/board/${param}`, {
+        axios.put(`https://fallacious-chivalrous-date.glitch.me/board/${param}`, {
             ...choiceBoard,
             count: countIncrement
         })

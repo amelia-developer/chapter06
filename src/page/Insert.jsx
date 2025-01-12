@@ -49,7 +49,7 @@ function Insert() {
 
     const onRegister = async() => {
         try {
-                const registerData = await axios.post("http://localhost:3000/board", {
+                const registerData = await axios.post("https://fallacious-chivalrous-date.glitch.me/board", {
                     title: title,
                     author: author,
                     contents: contents,
