@@ -1,3 +1,4 @@
+🛡️📝해당 깃헙 주소 변경: https://github.com/lab-ml-22/chapter06-develop (기존 리엑트 -> 타입스크립트로 전환하여 개선)<br><br><br>
 <p align="center">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
@@ -14,7 +15,6 @@
 <br>
 <p align="center">
    <h1><strong>React-board 프로젝트</strong>📋🗂️📌📝</h1>
-    <span>해당 서비스는 glitch의 호스팅이 종료되어 vercel로 옮기는 작업 진행중(2025-09-09)</span><br><br><br>
     <ul>
       <li><span>목표: 중앙상태관리의 완벽한 필요성을 느끼게해준 게시판</span></li>
       <li><span>기술스택: react, scss, axios, firebaseHosting, json-server를 Glitch에서 호스팅하여 API 엔드포인트 변경</li>
@@ -34,6 +34,12 @@
   <ul>
     <li>
       <span>2025-09-09(화)</span>
+      <p>원인: glitch에서 호스팅중단으로 인해 CRUD기능 오류</p>
+      <p>해결방법: vercel로 호스팅 변경함</p>
+      <p>🚀✨디벨롭: react로 작성된 기존 프로젝트를 typescript로 전환해서 타입 안정성과 유지보수성 개선</p>
+    </li>
+    <li>
+      <span>2025-09-08(월)</span>
       <ol>
         <li>
           <span>json-server로  glitch에 올리니까, 페이징처리가 안됨</span>
