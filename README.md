@@ -16,7 +16,7 @@
    <h1><strong>React-board 프로젝트</strong>📋🗂️📌📝</h1>
     <span>해당 서비스는 glitch의 호스팅이 종료되어 vercel로 옮기는 작업 진행중(2025-09-09)</span><br><br><br>
     <ul>
-      <li><span>목표: 중앙상태관리의 소중함을 느끼게해준 게시판</span></li>
+      <li><span>목표: 중앙상태관리의 완벽한 필요성을 느끼게해준 게시판</span></li>
       <li><span>기술스택: react, scss, axios, firebaseHosting, json-server를 Glitch에서 호스팅하여 API 엔드포인트 변경</li>
       <li><span>배포링크: https://react-board-new.web.app/lists?_page=1#</span></li>
       <li>
@@ -33,7 +33,7 @@
   <h2>ISSUE</h2>
   <ul>
     <li>
-      <span>1). 2025-09-09(화)</span>
+      <span>2025-09-09(화)</span>
       <ol>
         <li>
           <span>json-server로  glitch에 올리니까, 페이징처리가 안됨</span>
